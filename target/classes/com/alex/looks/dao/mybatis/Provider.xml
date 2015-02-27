@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Provider">
+   
+    <resultMap id="mapSelectProvider" type="Provider">
+        <result property="id" column="id"/>
+        <result property="fullName" column="full_name"/>
+        <result property="adress" column="adress"/>
+        <result property="tel" column="tel"/>
+        <result property="site" column="site"/>
+        <result property="email" column="email"/>
+        <result property="description" column="description"/>
+    </resultMap> 
+    
+    <insert id="insert" parameterType="Provider"
+	useGeneratedKeys="true" keyProperty="id">
+		INSERT IGNORE INTO provider (full_name,
+		adress, tel, site, email, description)
+		VALUES (#{fullName}, #{adress}, #{tel},
+		#{site}, #{email}, #{description});
+	</insert>
+
+	
+     <select id="selectAll" resultMap="mapSelectProvider">
+        SELECT *
+        FROM provider
+        ORDER BY id
+        ASC;
+    </select>
+     
+     <update id="update" parameterType="Provider">
+		UPDATE provider
+		SET adress = #{adress}, tel = #{tel}, site = #{site}, email = #{email}, description = #{description} 
+		WHERE full_name = #{fullName};
+	</update>
+    
+      <delete id="deleteAllProvider">
+		TRUNCATE TABLE provider;
+	</delete> 
+     
+</mapper>

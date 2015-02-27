@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SoldProduct">
+	
+     <resultMap id="mapSelectArticle" type="SoldProduct">
+        <result property="name" column="name"/>
+        <result property="firm" column="firm"/>
+        <result property="article" column="article"/>
+        <result property="number" column="number"/>
+        <result property="costOutPut" column="cost_output"/>
+        <result property="discount" column="discount"/>
+        <result property="sum" column="sum"/>
+        <result property="time" column="time_sold"/>
+    </resultMap>
+    
+    <insert id="insert" parameterType="SoldProduct"
+        useGeneratedKeys="true" keyProperty="id">
+        INSERT IGNORE INTO sold_product (name,
+        firm, article, number,
+        cost_output, discount, sum, time_sold) VALUES (#{name}, #{firm},
+        #{article}, #{number}, #{costOutPut}, #{discount},
+        #{sum}, now());
+    </insert>
+    
+    <select id="selectOnTheArticle" parameterType="String" resultMap="mapSelectArticle">
+        SELECT *
+        FROM sold_product
+        WHERE article = #{article};
+    </select>
+    
+     <select id="selectAll" resultMap="mapSelectArticle">
+        SELECT *
+        FROM sold_product;
+    </select>
+    
+</mapper>

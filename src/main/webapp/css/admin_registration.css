@@ -1,0 +1,173 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.tim {
+	
+	
+	color: #191970;
+	border: 0;
+	margin: 5px 53px 0 4px;
+	padding: 0px 0px 0px 10px;
+	width: 229px;
+	height: 32px;
+	
+	font-size: 18px;
+}
+
+
+#login_container {
+	width: 505px;
+	height: 559px;
+	margin: 1px auto;
+	background: url('images_registration/login_bgr.png') top left no-repeat;
+}
+
+#form_container {
+	width: 400px;
+	height: 600px;
+	margin: 0px auto;
+	padding-top: 50px;
+}
+
+#login_container_entrance {
+	width: 505px;
+	height: 711px;
+	margin: 1px auto;
+	background: url('images_entrance/login_bgr.png') top left no-repeat;
+}
+
+#form_container_entrance {
+	width: 450px;
+	height: 800px;
+	margin: 0px auto;
+	padding-top: 50px;
+}
+
+.text_input:focus {
+	outline: 0;
+	
+}
+
+
+
+.text_input {
+	font-size: 18px;
+	color: #191970;
+	border: 0;
+	margin: 5px 53px 0 84px;
+	padding: 0px 0px 0px 10px;
+	width: 229px;
+	height: 32px;
+	background: url('images_registration/text_input.png') top left no-repeat;
+	
+	
+}
+.text_inpu {
+	font-size: 16px;
+	color: #191970;
+	border: 0;
+	margin: 5px 5px 0 4px;
+	padding: 0px 0px 0px 10px;
+	width: 239px;
+	height: 32px;
+	background: url('images_registration/text_input.png') top left no-repeat;
+	
+}
+
+#submit_registration {
+	margin: 20px 10px;
+	border: 0;
+	width: 200px;
+	height: 38px;
+	background: url('images_registration/login_btn_hov.png') top left no-repeat;
+	cursor:pointer;
+}
+
+#submit_registration:hover {opacity:0.9;}
+
+#submit_registration:active {
+	background: url('images_registration/login_btn_hov.png') top left no-repeat;
+}
+
+#sumbit_reserve_copy_db {
+	margin: 20px 30%;
+	border: 0;
+	width: 376px;
+	height: 365px;
+	background: url('recovery_backup/sumbit_reserve_copy_db.png') top left no-repeat;
+	cursor:pointer;
+}
+
+#sumbit_reserve_copy_db:hover {opacity:0.9;}
+
+#sumbit_reserve_copy_db:active {
+	background: url('recovery_backup/sumbit_reserve_copy_db.png') top left no-repeat;
+}
+
+#sumbit_recovery_db {
+	margin: 20px 30%;
+	border: 0;
+	width: 376px;
+	height: 365px;
+	background: url('recovery_backup/sumbit_recovery_db.png') top left no-repeat;
+	cursor:pointer;
+}
+
+#sumbit_recovery_db:hover {opacity:0.9;}
+
+#sumbit_recovery_db:active {
+	background: url('recovery_backup/sumbit_recovery_db.png') top right no-repeat;
+}
+
+#submit_entrance {
+	margin: 20px 60px;
+	border: 0;
+	width: 374px;
+	height: 378px;
+	background: url('images_entrance/login_btn.png') top left no-repeat;
+	cursor:pointer;
+}
+
+#submit_entrance:hover {opacity:1;}
+
+#submit_entrance:active {
+	background: url('images_entrance/login_btn.png') top left no-repeat;
+}
+
+#submit_update {
+	margin: 0px 0px;
+	border: 0;
+	width: 128px;
+	height: 128px;
+	background: url('images_registration/db_update.png') top left no-repeat;
+	cursor:pointer;
+}
+
+#submit_update:hover {opacity:0.9;}
+
+#submit_update:active {
+	background: url('images_registration/db_update.png') top left no-repeat;
+}
+
+
+
+
+
+
+
+
+.text_span {
+	text-align: left;
+	margin: 2px;
+	color: #FF7F50;
+	font-size: 18px;
+}
+
+.login-text {
+	text-align: center;
+	margin: 2px;
+	color: #515151;
+	font-family: 'Lobster', cursive;
+}

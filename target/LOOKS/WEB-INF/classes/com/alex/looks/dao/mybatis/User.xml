@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+	
+     <resultMap id="mapSelectUser" type="User">
+        <result property="fullName" column="full_name"/>
+        <result property="tel" column="tel"/> 
+        <result property="status" column="status"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="hash" column="hash"/>
+    </resultMap>
+    
+   <insert id="insert" parameterType="User"
+        useGeneratedKeys="true" keyProperty="id">
+        INSERT IGNORE INTO security (full_name, tel, status,
+        username, password, hash) VALUES (#{fullName}, #{tel}, #{status}, #{username},
+        #{password}, #{hash});
+    </insert>
+    
+    <select id="selectOnTheUser" parameterType="User" resultMap="mapSelectUser">
+        SELECT *
+        FROM security
+        WHERE username LIKE #{username} AND password LIKE #{password};
+    </select>
+    
+     <select id="selectAll" resultMap="mapSelectUser">
+        SELECT *
+        FROM security;
+    </select>
+    
+      <delete id="delete" parameterType="User">
+         DELETE
+         FROM security
+         WHERE username LIKE #{username};
+     </delete>
+     
+       <update id="update" parameterType="User">
+		UPDATE security
+		SET password = #{password}, hash = #{hash}
+		WHERE username = #{username};
+	</update>
+    
+</mapper>

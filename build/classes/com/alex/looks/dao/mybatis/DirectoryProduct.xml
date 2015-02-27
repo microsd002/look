@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DirectoryProduct">
+    
+    <resultMap id="mapSelectArticle" type="DirectoryProduct">
+        <result property="name" column="name"/>
+        <result property="firm" column="firm"/>
+        <result property="article" column="article"/>
+        <result property="number" column="number"/>
+        <result property="costOutPut" column="cost_output"/>
+        <result property="timeUpdate" column="time_update_product"/>
+        
+    </resultMap>
+    
+     <insert id="insert" parameterType="DirectoryProduct"
+        useGeneratedKeys="true" keyProperty="id">
+        INSERT IGNORE INTO directory_of_product (name,
+        firm, article, number, cost_output, time_update_product) VALUES (#{name}, #{firm},
+        #{article}, #{number}, #{costOutPut}, now());
+    </insert>
+
+     <select id="selectOnTheArticle" parameterType="String" resultMap="mapSelectArticle">
+        SELECT *
+        FROM directory_of_product
+        WHERE article = #{article};
+    </select>
+    
+     <select id="selectAll" resultMap="mapSelectArticle">
+        SELECT *
+        FROM directory_of_product;
+    </select>
+    
+     <update id="update" parameterType="DirectoryProduct">
+		UPDATE directory_of_product
+		SET number = #{number}, time_update_product = now()
+		WHERE article = #{article};
+	</update>
+    
+    
+</mapper>

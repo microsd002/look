@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+	
+     <resultMap id="mapSelectUser" type="User">
+        <result property="status" column="status"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+    
+   <insert id="insert" parameterType="User"
+        useGeneratedKeys="true" keyProperty="id">
+        INSERT IGNORE INTO security (status,
+        username, password) VALUES (#{status}, #{username},
+        #{password});
+    </insert>
+    
+    <select id="selectOnTheUser" parameterType="String" resultMap="mapSelectUser">
+        SELECT *
+        FROM security
+        WHERE username = #{username};
+    </select>
+    
+     <select id="selectAll" resultMap="mapSelectUser">
+        SELECT *
+        FROM security;
+    </select>
+    
+</mapper>
