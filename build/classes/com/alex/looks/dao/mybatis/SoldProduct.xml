@@ -6,6 +6,7 @@
 <mapper namespace="SoldProduct">
 	
      <resultMap id="mapSelectArticle" type="SoldProduct">
+        <result property="id" column="id"/> 
         <result property="name" column="name"/>
         <result property="firm" column="firm"/>
         <result property="article" column="article"/>
@@ -13,16 +14,17 @@
         <result property="costOutPut" column="cost_output"/>
         <result property="discount" column="discount"/>
         <result property="sum" column="sum"/>
-        <result property="time" column="time_sold"/>
-    </resultMap>
+        <result property="time" column="time"/>
+        <result property="nameUserAdmin" column="name_user_admin"/>
+    </resultMap> 
     
     <insert id="insert" parameterType="SoldProduct"
         useGeneratedKeys="true" keyProperty="id">
         INSERT IGNORE INTO sold_product (name,
         firm, article, number,
-        cost_output, discount, sum, time_sold) VALUES (#{name}, #{firm},
-        #{article}, #{number}, #{costOutPut}, #{discount},
-        #{sum}, now());
+        cost_output, discount, sum, time, name_user_admin)
+        VALUES (#{name}, #{firm}, #{article}, #{number},
+        #{costOutPut}, #{discount}, #{sum}, now(), #{nameUserAdmin});
     </insert>
     
     <select id="selectOnTheArticle" parameterType="String" resultMap="mapSelectArticle">
@@ -33,7 +35,26 @@
     
      <select id="selectAll" resultMap="mapSelectArticle">
         SELECT *
-        FROM sold_product;
+        FROM sold_product
+        ORDER BY time
+        Desc;
+    </select>
+
+     <delete id="delete" parameterType="Integer">
+         DELETE
+         FROM sold_product
+         WHERE id LIKE #{id};
+     </delete>
+     
+    <select id="selectLimit" resultType="Integer">
+        SELECT id
+        FROM sold_product
+        ORDER BY id
+        Desc LIMIT 1;      
     </select>
     
+    <delete id="deleteAllSold">
+		TRUNCATE TABLE sold_product;
+	</delete> 
+     
 </mapper>

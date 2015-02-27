@@ -21,8 +21,8 @@
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/jbossews"/>
-                <property name="username" value="admin8QJmJSx"/>
-                <property name="password" value="xi27gIpghxZG"/>
+                <property name="username" value="adminECvV7Lm"/>
+                <property name="password" value="1pezmljj_e9I"/>
             </dataSource>
         </environment>
     </environments>

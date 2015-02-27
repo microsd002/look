@@ -8,19 +8,22 @@
     <resultMap id="mapSelectArticle" type="DirectoryProduct">
         <result property="name" column="name"/>
         <result property="firm" column="firm"/>
+        <result property="provider" column="provider"/>
         <result property="article" column="article"/>
         <result property="number" column="number"/>
         <result property="costOutPut" column="cost_output"/>
         <result property="timeUpdate" column="time_update_product"/>
-        
+        <result property="story" column="story"/>
+        <result property="nameAdmin" column="name_admin"/>
     </resultMap>
     
-     <insert id="insert" parameterType="DirectoryProduct"
-        useGeneratedKeys="true" keyProperty="id">
-        INSERT IGNORE INTO directory_of_product (name,
-        firm, article, number, cost_output, time_update_product) VALUES (#{name}, #{firm},
-        #{article}, #{number}, #{costOutPut}, now());
-    </insert>
+    <insert id="insert" parameterType="DirectoryProduct"
+	useGeneratedKeys="true" keyProperty="id">
+		INSERT IGNORE INTO directory_of_product (name,
+		firm, provider, article, number, cost_output, time_update_product, story, name_admin)
+		VALUES (#{name}, #{firm}, #{provider},
+		#{article}, #{number}, #{costOutPut}, now(), #{story}, #{nameAdmin});
+	</insert>
 
      <select id="selectOnTheArticle" parameterType="String" resultMap="mapSelectArticle">
         SELECT *
@@ -28,16 +31,28 @@
         WHERE article = #{article};
     </select>
     
+      <select id="selectOnTheArticleFirm" parameterType="DirectoryProduct" resultMap="mapSelectArticle">
+        SELECT *
+        FROM directory_of_product
+        WHERE article = #{article} AND firm = #{firm};;
+    </select>
+     
      <select id="selectAll" resultMap="mapSelectArticle">
         SELECT *
-        FROM directory_of_product;
+        FROM directory_of_product
+        ORDER BY number
+        Desc;
     </select>
     
      <update id="update" parameterType="DirectoryProduct">
 		UPDATE directory_of_product
-		SET number = #{number}, time_update_product = now()
-		WHERE article = #{article};
+		SET number = #{number}, cost_output = #{costOutPut}, time_update_product = now(), story = #{story}
+		WHERE article = #{article} AND firm = #{firm};
 	</update>
-    
+  
+     <delete id="deleteAllDirectory">
+		TRUNCATE TABLE directory_of_product;
+	</delete>
+     
     
 </mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EntrancePrice">
+    
+    <resultMap id="mapSelectArticle" type="EntrancePrice">
+        <result property="name" column="name"/>
+        <result property="firm" column="firm"/>
+        <result property="provider" column="provider"/>
+        <result property="article" column="article"/>
+        <result property="number" column="number"/>
+        <result property="costEntrance" column="cost_entrance"/>
+        <result property="costOutPut" column="cost_output"/>
+        <result property="time" column="time"/>
+        <result property="nameAdmin" column="name_admin"/>
+    </resultMap>
+ 
+    <insert id="insert" parameterType="EntrancePrice"
+        useGeneratedKeys="true" keyProperty="id">
+        INSERT IGNORE INTO entrance_price (name,
+        firm, provider, article, number, cost_entrance,
+        cost_output, time, name_admin) VALUES (#{name}, #{firm},
+        #{provider}, #{article}, #{number}, #{costEntrance},
+        #{costOutPut}, #{time}, #{nameAdmin});
+    </insert>
+    
+     <select id="selectOnTheArticle" parameterType="String" resultMap="mapSelectArticle">
+        SELECT *
+        FROM entrance_price
+        WHERE article = #{article};
+    </select>
+    
+     <select id="selectAll" resultMap="mapSelectArticle">
+        SELECT *
+        FROM entrance_price
+        ORDER BY time
+        Desc;
+    </select>
+    
+    <delete id="deleteAllEntrance">
+		TRUNCATE TABLE entrance_price;
+	</delete> 
+     
+     
+</mapper>

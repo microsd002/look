@@ -6,10 +6,13 @@
 <configuration>
     <typeAliases>
         <typeAlias alias="EntrancePrice" type="com.alex.looks.models.EntrancePrice"/>
+        <typeAlias alias="Provider" type="com.alex.looks.models.Provider"/>
+        <typeAlias alias="ReturnOrWriteOff" type="com.alex.looks.models.ReturnOrWriteOff"/>
         <typeAlias alias="SoldProduct" type="com.alex.looks.models.SoldProduct"/>
         <typeAlias alias="DirectoryProduct" type="com.alex.looks.models.DirectoryProduct"/>
         <typeAlias alias="User" type="com.alex.looks.models.User"/>
    		<typeAlias alias="String" type="java.lang.String"/>  
+   		<typeAlias alias="Integer" type="java.lang.Integer"/>
     </typeAliases>
     
     <environments default="development">
@@ -17,9 +20,9 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/looks"/>
-                <property name="username" value="root"/>
-                <property name="password" value="1234"/>
+                <property name="url" value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/jbossews"/>
+                <property name="username" value="adminECvV7Lm"/>
+                <property name="password" value="1pezmljj_e9I"/>
             </dataSource>
         </environment>
     </environments>
@@ -28,5 +31,7 @@
         <mapper resource="com/alex/looks/dao/mybatis/SoldProduct.xml"/>
         <mapper resource="com/alex/looks/dao/mybatis/DirectoryProduct.xml"/>
         <mapper resource="com/alex/looks/dao/mybatis/User.xml"/>
+        <mapper resource="com/alex/looks/dao/mybatis/ReturnOrWriteOff.xml"/>
+        <mapper resource="com/alex/looks/dao/mybatis/Provider.xml"/>
     </mappers>
 </configuration>

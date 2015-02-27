@@ -14,15 +14,16 @@
         <result property="costEntrance" column="cost_entrance"/>
         <result property="costOutPut" column="cost_output"/>
         <result property="time" column="time"/>
+        <result property="nameAdmin" column="name_admin"/>
     </resultMap>
  
     <insert id="insert" parameterType="EntrancePrice"
         useGeneratedKeys="true" keyProperty="id">
         INSERT IGNORE INTO entrance_price (name,
         firm, provider, article, number, cost_entrance,
-        cost_output, time) VALUES (#{name}, #{firm},
+        cost_output, time, name_admin) VALUES (#{name}, #{firm},
         #{provider}, #{article}, #{number}, #{costEntrance},
-        #{costOutPut}, #{time});
+        #{costOutPut}, #{time}, #{nameAdmin});
     </insert>
     
      <select id="selectOnTheArticle" parameterType="String" resultMap="mapSelectArticle">
@@ -33,6 +34,14 @@
     
      <select id="selectAll" resultMap="mapSelectArticle">
         SELECT *
-        FROM entrance_price;
+        FROM entrance_price
+        ORDER BY time
+        Desc;
     </select>
+    
+    <delete id="deleteAllEntrance">
+		TRUNCATE TABLE entrance_price;
+	</delete> 
+     
+     
 </mapper>
